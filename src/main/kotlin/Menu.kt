@@ -30,11 +30,11 @@ open class Menu<T> : MenuInterface<T> {
     }
 
     override fun checkRecordDescription(recordDescription: String) {
-        isEmptyRecordDescription = if (recordDescription.isNotEmpty()) {
-            false
-        } else {
+        if (recordDescription.isBlank() || recordDescription.isEmpty()) {
             print("Описание не может быть пустым, попробуйте еще раз: ")
-            true
+            isEmptyRecordDescription = true
+        } else if (recordDescription.isNotEmpty()) {
+            isEmptyRecordDescription = false
         }
     }
 
